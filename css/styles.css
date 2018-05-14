@@ -1,0 +1,134 @@
+body {
+    padding: 10px 5px;
+}
+
+* {
+   box-sizing: border-box; 
+}
+
+.main-container {
+    display: block;
+    min-width: 820px;
+    max-width: 1600px;
+    margin: 0 auto; 
+    padding: 10px;
+    background-color: #eeeeee;
+    border: 2px solid #555555;
+}
+
+.form-container {
+    display: block;
+    width: 100%;
+    padding: 2px;
+}
+
+.part-1, .part-2 {
+    display: block;
+    width: 100%;
+    margin: 5px auto; 
+    padding: 5px;
+    border: 2px solid #555555;
+}
+
+h1, h2, h3 {
+    margin: 5px auto;
+    padding: 5px;
+    text-decoration: none;
+    color: #445588;
+ }
+
+h1 {
+    font-size: 22px;
+    text-align: center;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+h3 {
+    margin: 3px 5px 3px auto;
+    font-size: 18px;
+    text-align: left;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    margin: 5px auto;
+    padding: 2px;
+}
+
+td {
+    display: table-cell;
+    width: auto;
+    min-width: 100px;
+    min-height: 2em;
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #dddddd;
+}
+
+.task-isdone {
+    color: green;
+}
+
+.task-active {
+    color: orange;
+}
+
+.header-row {
+    text-align: center;
+    font-weight: 700;
+    background-color: #cccccc;
+}
+
+.table-row:nth-child(2n+1) {
+    background-color: #ffffff;
+}
+
+.table-row:nth-child(2n+2) {
+    background-color: #eeeeee;
+}
+
+.column-date {
+    width: 200px;
+}
+
+.column-action {
+    width: 100px;
+}
+
+.column-status {
+    width: 100px;
+}
+
+.column-assigned_user {
+    width: 150px;
+}
+
+.column-author {
+    width: 100px;
+}
+
+.column-assign {
+    width: 250px;
+}
+
+.column-description {
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.logout-button {
+    display: block;
+    width: 100px;
+    height: 1.2em;
+    text-align: center;
+    vertical-align: central;
+    text-decoration: none;
+    color: #445588;
+    background-color: #dddddd;
+}
