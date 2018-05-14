@@ -15,23 +15,18 @@
     $params = [];//параметры запроса для передачи
     $id = 0;
     $users = get_users();
-    if (isset($_GET)) {
-        echo 'GET-1=';var_dump($_GET);echo '<br>';
+    if ((!empty($_GET)) && (empty($_POST))) {
         $params = filter_input_array(INPUT_GET, $_GET);
         $params['author'] = $authorized_user;
         unset($_GET);
-        echo 'GET-2=';var_dump($_GET);echo '<br>';
+    } else {
+        if ((isset($_POST)) && (!isset($_POST['password']))) {
+            unset($_GET);
+            $params = filter_input_array(INPUT_POST, $_POST);
+            $params['author'] = $authorized_user;
+            unset($_POST);
+        }
     }
-    if ((isset($_POST)) && (!isset($_POST['password']))) {
-        echo 'POST-1=';var_dump($_POST);echo '<br>';
-        unset($params);
-        $params = filter_input_array(INPUT_POST, $_POST);
-        $params['author'] = $authorized_user;
-        unset($_POST);
-        echo 'POST-2=';var_dump($_POST);echo '<br>';
-    }
-//    $params['author'] = $authorized_user;
-    echo 'params=';var_dump($params);echo '<br>';
     $tasks = do_command($params);
     $assigned_tasks = get_assigned_tasks($authorized_user);
     unset($params);
