@@ -84,7 +84,7 @@
                             <td class="column-date"><?=$record['date_added']; ?></td>
                             <td class="column-status">
                                 <?php 
-                                    if ($record['is_done'] === 1) {
+                                    if ($record['is_done'] == 1) {
                                         echo '<span class="task-isdone">выполнено</span>';
                                     } else {
                                         echo '<span class="task-active">в работе</span>';

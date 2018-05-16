@@ -40,18 +40,9 @@ class Database
     public function get_tasks_by_user($user_name, $sort_field)
     {
         $user_id = $this -> get_user_id($user_name);
-        $request = <<<EOT
-            SELECT
-                task.id AS id,
-                task.description AS description,
-                task.date_added AS date_added,
-                user.login AS author,
-                task.is_done AS is_done
-            FROM task
-            INNER JOIN user ON user.id = task.user_id
-            WHERE task.assigned_user_id = :user_id
-            ORDER BY :field DESC
-EOT;
+        $request = 'SELECT task.id AS id, task.description AS description, task.date_added AS date_added, user.login AS author, task.is_done AS is_done';
+        $request .= ' FROM task INNER JOIN user ON user.id = task.user_id WHERE task.assigned_user_id = :user_id AND task.user_id <> :user_id';
+        $request .= ' ORDER BY :field DESC';
         $params = [
             [
                 'fieldName' => ':user_id',
@@ -72,18 +63,9 @@ EOT;
     public function get_tasks_by_author($author_name, $sort_field)
     {
         $author_id = $this -> get_user_id($author_name);
-        $request = <<<EOT
-            SELECT
-                task.id AS id,
-                task.description AS description,
-                task.date_added AS date_added,
-                user.login AS assigned_user,
-                task.is_done AS is_done
-            FROM task
-            INNER JOIN user ON user.id = task.assigned_user_id
-            WHERE task.user_id = :author_id
-            ORDER BY :field DESC
-EOT;
+        $request = 'SELECT task.id AS id, task.description AS description, task.date_added AS date_added, user.login AS assigned_user, task.is_done AS is_done';
+        $request .= ' FROM task INNER JOIN user ON user.id = task.assigned_user_id';
+        $request .= ' WHERE task.user_id = :author_id ORDER BY :field DESC';
         $params = [
             [
                 'fieldName' => ':author_id',
