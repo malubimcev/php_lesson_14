@@ -121,6 +121,7 @@
                             <td class="column-description">Описание задачи</td>
                             <td class="column-date">Дата добавления</td>
                             <td class="column-status">Статус</td>
+                            <td class="column-action">Действия</td>
                             <td class="column-assigned_user">Ответственный</td>
                             <td class="column-author">Автор</td>
                         </tr>
@@ -139,6 +140,9 @@
                                         echo '<span class="task-active">в работе</span>';
                                     }
                                 ?>
+                            </td>
+                            <td class="column-action">
+                                <a href="?id=<?=$id;?>;action=done">Выполнить</a><br>
                             </td>
                             <td class="column-assigned_user"><?=$authorized_user; ?></td>
                             <td class="column-author"><?=$task['author']; ?></td>
